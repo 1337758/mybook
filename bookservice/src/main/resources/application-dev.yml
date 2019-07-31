@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/mybook?useUnicode=true&amp;characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/mybook?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+    username: root
+    password: root
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    timeout: 180000
+  servlet:
+    multipart:
+      #设置上传文件根路径
+      location: D:/
+#日志文件位置
+logging:
+  file: D:/code/log/runze.log
+#添加服务器ip，供获取图片
+yg-file:
+  ip: localhost

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ============================================================== -->
+<!-- ================可直接使用Base配置文件中定义的节点============== -->
+<!-- ============================================================== -->
+<mapper namespace="com.liulei.book.dao.ArticleDao">
+ 
+  	<!-- 根据vo进行查询 -->
+	<select id="selectPageByVo" resultMap="BaseResultMap" parameterType="com.liulei.book.vo.ArticleVo">
+		select
+			<include refid="Base_Column_List" />
+		from article
+		<where>
+			<include refid="Base_Select_By_Entity_Where" />
+			<include refid="Entity_Where_queryValue" />
+		</where>
+	</select>
+  
+  	<sql id="Entity_Where_queryValue">
+  		<if test="queryValue != null" >
+			and (rux_words like "%"#{queryValue}"%" or title like "%"#{queryValue}"%" or type = #{queryValue} or classify = #{queryValue})
+		</if>
+  	</sql>
+  
+</mapper>
